@@ -1,0 +1,14 @@
+[Application]
+#Port = "3021"
+#LogLevel = "trace"
+
+[Database]
+#Host = ""
+#User = ""
+#Password = ""
+#Port = 2111 
+#Db = ""
+
+[Broker]
+#UserURL = "78.110.156.74:6004"
+#UserCredits = "barmen:kfclover97"
