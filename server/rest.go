@@ -2,12 +2,11 @@ package server
 
 import (
 	"github.com/labstack/echo/v4"
-
-	handler "booking/booking.core/hendler"
+	"gitlab.com/tuloev_alan/booking.core/handler"
 )
 
 const (
-	apiPrefix = "/api/v3"
+//apiPrefix = "/api/v3"
 )
 
 type Rest struct {
@@ -17,9 +16,7 @@ type Rest struct {
 
 // Route defines all the application rest endpoints
 func (r *Rest) Route() {
-	//web.UseHealthCheck(r.Router)
-
-	g := r.Router.Group(apiPrefix)
+	//g := r.Router.Group(apiPrefix)
 
 	//g.POST("/messages", r.CreateMessage)
 }

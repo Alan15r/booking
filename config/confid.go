@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	envPrefix = "chat"
+	envPrefix = "booking"
 )
 
 type Application struct {

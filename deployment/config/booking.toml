@@ -1,13 +1,13 @@
 [Application]
-#Port = "3021"
-#LogLevel = "trace"
+#Port = "5432"
+#LogLevel = "local"
 
 [Database]
-#Host = ""
-#User = ""
-#Password = ""
-#Port = 2111 
-#Db = ""
+Host = "127.0.0.1"
+User = "alan"
+Password = "root"
+Port = 5432
+Db = "booking"
 
 [Broker]
 #UserURL = "78.110.156.74:6004"

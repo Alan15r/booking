@@ -1,17 +1,12 @@
 package handler
 
-import "booking/booking.core/config"
+import "gitlab.com/tuloev_alan/booking.core/config"
 
 type Repository interface {
 	MessageRepository
 }
-
-type Publisher interface {
-}
-
 type Handler struct {
 	DB     Repository
-	Pub    Publisher
 	Config *config.Config
 }
 
