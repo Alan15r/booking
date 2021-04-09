@@ -3,6 +3,7 @@ module gitlab.com/tuloev_alan/booking.core
 go 1.15
 
 require (
+	github.com/go-pg/pg v8.0.7+incompatible
 	github.com/go-pg/pg/v10 v10.9.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo/v4 v4.2.1

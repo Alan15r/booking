@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg"
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 	"gitlab.com/tuloev_alan/booking.core/config"
@@ -16,14 +16,13 @@ import (
 )
 
 const (
-	defaultConfigPath     = "deployment/config/chats.toml"
+	defaultConfigPath     = "deployment/config/booking.toml"
 	maxRequestsAllowed    = 1000
 	serverShutdownTimeout = 30 * time.Second
 	brokerShutdownTimeout = 30 * time.Second
 )
 
 func main() {
-
 	configPath := flag.String("config", defaultConfigPath, "configuration file path")
 	flag.Parse()
 
@@ -38,18 +37,21 @@ func main() {
 		Password: cfg.Database.Password,
 		Database: cfg.Database.Db,
 	})
-
 	if err != nil {
 		log.Fatalf("failed to create a db instance: %v", err)
 	}
 	defer db.Close()
 
+	router := echo.New()
+
+	hdlr := handler.Handler{
+		DB:     &repository.Pg{Db: db},
+		Config: cfg,
+	}
+
 	rest := server.Rest{
-		Router: echo.New(),
-		Handler: &handler.Handler{
-			DB:     &repository.Pg{Db: db},
-			Config: cfg,
-		},
+		Router:  router,
+		Handler: &hdlr,
 	}
 
 	rest.Route()
