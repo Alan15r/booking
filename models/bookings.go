@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Booking struct {
-	//tableName  {}struct `pg:"booking_bookings"`
+	tableName   struct{}  `pg:"booking_bookings"`
 	OwnerUUID   string    `json:"owner_uuid"`
 	ClientUUID  string    `json:"client_uuid"`
 	HouseUUID   string    `json:"house_uuid"`

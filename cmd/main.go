@@ -4,9 +4,8 @@ import (
 	"flag"
 	"log"
 	"strconv"
-	"time"
 
-	"github.com/go-pg/pg"
+	"github.com/go-pg/pg/v10"
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 	"gitlab.com/tuloev_alan/booking.core/config"
@@ -16,10 +15,7 @@ import (
 )
 
 const (
-	defaultConfigPath     = "deployment/config/booking.toml"
-	maxRequestsAllowed    = 1000
-	serverShutdownTimeout = 30 * time.Second
-	brokerShutdownTimeout = 30 * time.Second
+	defaultConfigPath = "deployment/config/booking.toml"
 )
 
 func main() {
@@ -42,12 +38,12 @@ func main() {
 	}
 	defer db.Close()
 
-	router := echo.New()
-
 	hdlr := handler.Handler{
 		DB:     &repository.Pg{Db: db},
 		Config: cfg,
 	}
+
+	router := echo.New()
 
 	rest := server.Rest{
 		Router:  router,
@@ -55,6 +51,7 @@ func main() {
 	}
 
 	rest.Route()
+	rest.Router.Logger.Fatal(router.Start(":3000"))
 }
 
 func Connect(op *pg.Options) (*pg.DB, error) {

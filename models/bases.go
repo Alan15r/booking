@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Base struct {
-	//tableName  {}struct `pg:"booking_bases"`
+	tableName  struct{}  `pg:"booking_bases"`
 	UUID       string    `json:"uuid"`
 	Name       string    `json:"name"`
 	OwnerUUID  string    `json:"owner_uuid"`

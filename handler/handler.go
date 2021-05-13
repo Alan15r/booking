@@ -1,14 +1,23 @@
 package handler
 
-import "gitlab.com/tuloev_alan/booking.core/config"
+import (
+	"context"
+
+	"gitlab.com/tuloev_alan/booking.core/config"
+	"gitlab.com/tuloev_alan/booking.core/models"
+	"gitlab.com/tuloev_alan/booking.core/proto"
+)
 
 type Repository interface {
-	MessageRepository
+	OwnerRepository
 }
 type Handler struct {
 	DB     Repository
 	Config *config.Config
 }
 
-type MessageRepository interface {
+type OwnerRepository interface {
+	CreateOwner(ctx context.Context, owner *models.Owner) (*models.Owner, error)
+	GetOwnerByFilter(ctx context.Context, filter *proto.OwnerFilter) ([]models.Owner, error)
+	GetOwnerByUUID(ctx context.Context, uuid string) (*models.Owner, error)
 }

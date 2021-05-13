@@ -1,6 +1,6 @@
 [Application]
-#Port = "5432"
-#LogLevel = "local"
+Port = "3000"
+LogLevel = "local"
 
 [Database]
 Host = "127.0.0.1"
@@ -9,6 +9,3 @@ Password = "root"
 Port = 5432
 Db = "booking"
 
-[Broker]
-UserURL = "78.110.156.74:6004"
-UserCredits = "barmen:kfclover97"

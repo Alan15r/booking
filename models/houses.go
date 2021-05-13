@@ -1,7 +1,7 @@
 package models
 
 type House struct {
-	//tableName  {}struct `pg:"booking_houses"`
+	tableName           struct{} `pg:"booking_houses"`
 	UUID                string   `json:"uuid"`
 	OwnerUUID           string   `json:"owner_uuid"`
 	Location            Location `json:"lacation"`

@@ -1,7 +1,7 @@
 package models
 
 type Gazebo struct {
-	//tableName  {}struct `pg:"booking_gazebos"`
+	tableName   struct{} `pg:"booking_gazebos"`
 	UUID        string   `json:"uuid"`
 	BaseUUID    string   `json:"base_uuid"`
 	BaseName    string   `json:"base_name"`

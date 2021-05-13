@@ -17,11 +17,12 @@ CREATE TABLE IF NOT EXISTS booking_bases
 
 CREATE TABLE IF NOT EXISTS booking_owners
 (
-    uuid        text        NOT NULL  DEFAULT uuid_generate_v4(),
+    uuid        text        NOT NULL                 DEFAULT uuid_generate_v4(),
     name        text        NOT NULL,
     phone       text        NOT NULL,
     requisites  text,
     blocked     boolean,
+    created_at  timestamp WITH TIME ZONE    NOT NULL DEFAULT CURRENT_TIMESTAMP,
 );
 
 CREATE TABLE IF NOT EXISTS booking_bookings
